@@ -2,16 +2,7 @@ import { useState } from "react";
 import "react-image-crop/dist/ReactCrop.css";
 import ReactCrop from "react-image-crop";
 import { uploadImage } from "../services/post";
-import {
-  CButton,
-  CCol,
-  CInput,
-  CModal,
-  CModalBody,
-  CModalFooter,
-  CModalHeader,
-  CRow,
-} from "@coreui/react";
+import { CButton, CCol, CInput,  CModal,  CModalBody,  CModalFooter,  CModalHeader,  CRow,} from "@coreui/react";
 
 const ImageCrop = ({ modal, toggle }) => {
   const [srcImg, setSrcImg] = useState(null);
