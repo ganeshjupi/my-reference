@@ -1,4 +1,6 @@
-import { cookies } from 'next/headers'; // Use Next.js built-in headers API
+import authApi from '@/_service/auth';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 export async function getServerSession() {
   // Get cookies from request
@@ -6,12 +8,10 @@ export async function getServerSession() {
   const tkn = cookieStore.get('tk')?.value;  
 
   if (!tkn) {
-    return null; // No session found
+    redirect("/signin")    
   }
-
+  const data = await authApi.getSession(tkn);
   
-  return { user:{email: 'user@example.com', authToken:tkn} }; // Dummy user
+  return { user:{...data, authToken:tkn} }; 
  
 }
-
-
